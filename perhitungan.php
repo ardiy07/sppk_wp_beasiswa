@@ -212,13 +212,26 @@ include('configdb.php');
 					echo "</table><hr>";
 					// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> vektor S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 					uasort($v, 'cmp');
+					echo "<b>Penerima Beasiswa</b></br>";
+					echo "<table class='table table-striped table-bordered table-hover'>";
+					echo "<thead><tr><th>Nama Alternatif</th><th>Rangking</th><th>Nilai</th></tr></thead>";
 					for ($i = 0; $i < $arl2; $i++) { //new for 8 lines below
-						if ($i == 0)
-							echo "<div class='alert alert-dismissible alert-info'><b><i>Dari tabel tersebut dapat disimpulkan bahwa " . $alt_name[array_search((end($v)), $v)] . " mempunyai hasil paling tinggi, yaitu " . current($v);
-						elseif ($i == ($arl2 - 1))
-							echo "</br>Dan terakhir " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v) . ".</i></b></div>";
-						else
-							echo "</br>Lalu diikuti dengan " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v);
+						if ($i == 0){
+							echo "<tr><td><b>" . $alt_name[array_search((end($v)), $v)] . "</b></td>";
+							echo "<td><b>" . $i + 1 . "</b></td>";
+							echo "<td><b>" . current($v) . "</b></td>";
+						} else{
+							echo "<tr><td><b>" . $alt_name[array_search((prev($v)), $v)] . "</b></td>";
+							echo "<td><b>" . $i + 1 . "</b></td>";
+							echo "<td><b>" . current($v) . "</b></td>";
+						}
+
+						// if ($i == 0)
+						// 	echo "<div class='alert alert-dismissible alert-info'><b><i>Dari tabel tersebut dapat disimpulkan bahwa " . $alt_name[array_search((end($v)), $v)] . " mempunyai hasil paling tinggi, yaitu " . current($v);
+						// elseif ($i == ($arl2 - 1))
+						// 	echo "</br>Dan terakhir " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v) . ".</i></b></div>";
+						// else
+						// 	echo "</br>Lalu diikuti dengan " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v);
 					}
 
 					function jml_kriteria()
