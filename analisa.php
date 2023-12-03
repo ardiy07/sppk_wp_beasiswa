@@ -217,7 +217,6 @@
 				?>
 			</center>
 		  </div>
-		  <div class="panel-footer text-primary"><?php echo $_SESSION['by'];?><div class="pull-right"></div></div>
 		</div>
 
     </div> <!-- /container -->

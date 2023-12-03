@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alternatif` (
-  `id_alternatif` varchar(20) NOT NULL,
+  `id_alternatif` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `alternatif` varchar(250) NOT NULL,
   `k1` varchar(20) NOT NULL,
   `k2` varchar(20) NOT NULL,
@@ -41,9 +41,20 @@ CREATE TABLE `alternatif` (
 -- Dumping data for table `alternatif`
 --
 
-INSERT INTO `alternatif` (`id_alternatif`, `alternatif`, `k1`, `k2`, `k3`, `k4`) VALUES
-('12', 'samsung ga', '1850', '7', '8', '7'),
-('13', 'Xperia', '1775', '7', '7', '6');
+INSERT INTO `alternatif` (`alternatif`, `k1`, `k2`, `k3`, `k4`) VALUES
+('Ira Nur Safitri',	'666667',	'93',	'80',	'40'),
+('Halfi Syahdan Basith',	'1000000',	'86',	'40',	'60'),
+('Ananda Dirga Aqilanaza', '1500000',	'93',	'40',	'100'),
+('Dewi Alwiyana Yanti',	'1000000',	'92',	'60',	'40'),
+('Femas Bagus Suseno',	'900000',	'83',	'80',	'100'),
+('Lia Indriani',	'500000',	'82',	'60',	'80'),
+('Intan Nurainy',	'1000000',	'81',	'20',	'80'),
+('Imelda Mega Kanya',	'1500000',	'89',	'20',	'80'),
+('Vita Nur Amalia',	'900000',	'81',	'20',	'100'),
+('Ika Nur Fitriani',	'1500000',	'93',	'80',	'80'),
+('Imelia Putika Sari',	'1000000',	'83',	'80',	'60'),
+('Yuniar Rachmalita',	'1500000',	'92',	'20',	'60'),
+('Linda Handayani',	'1000000',	'90',	'60',	'40');
 
 
 -- --------------------------------------------------------
@@ -53,7 +64,7 @@ INSERT INTO `alternatif` (`id_alternatif`, `alternatif`, `k1`, `k2`, `k3`, `k4`)
 --
 
 CREATE TABLE `kriteria` (
-  `id_kriteria` varchar(20) NOT NULL,
+  `id_kriteria` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `kriteria` varchar(100) NOT NULL,
   `kepentingan` varchar(20) NOT NULL,
   `cost_benefit` varchar(20) NOT NULL
@@ -63,28 +74,15 @@ CREATE TABLE `kriteria` (
 -- Dumping data for table `kriteria`
 --
 
-INSERT INTO `kriteria` (`id_kriteria`, `kriteria`, `kepentingan`, `cost_benefit`) VALUES
-('1', 'C1 Pendapatan Orang Tua', '35', 'cost'),
-('2', 'C2 merk', '30', 'benefit'),
-('3', 'C3 warna', '15', 'benefit'),
-('4', 'C4 spesifikasi', '20', 'benefit');
+INSERT INTO `kriteria` (`kriteria`, `kepentingan`, `cost_benefit`) VALUES
+('C1 Pendapatan Orang Tua', '35', 'cost'),
+('C2 Nilai Raport', '30', 'benefit'),
+('C3 Motivation Letter', '15', 'benefit'),
+('C4 Wawancara', '20', 'benefit');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `alternatif`
---
-ALTER TABLE `alternatif`
-  ADD PRIMARY KEY (`id_alternatif`);
-
---
--- Indexes for table `kriteria`
---
-ALTER TABLE `kriteria`
-  ADD PRIMARY KEY (`id_kriteria`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

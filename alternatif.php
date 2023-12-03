@@ -1,6 +1,10 @@
 <?php
 session_start();
 include('configdb.php');
+function rupiah($angka){
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,7 @@ include('configdb.php');
 	<meta name="author" content="">
 	<link rel="icon" href="favicon.ico">
 
-	<title><?php echo $_SESSION['judul'] . " - " . $_SESSION['by']; ?></title>
+	<title><?php echo $_SESSION['judul']; ?></title>
 
 	<!-- Bootstrap core CSS -->
 	<!--link href="ui/css/bootstrap.css" rel="stylesheet"-->
@@ -107,10 +111,10 @@ include('configdb.php');
 						<?php
 						$i = 1;
 						while ($row = $alternatif->fetch_assoc()) {
-							echo '<tr>';
+							echo '<tr class="text-center">';
 							echo '<td>' . $i++ . '</td>';
 							echo '<td>' . ucwords($row["alternatif"]) . '</td>';
-							echo '<td>' . $row["k1"] . '</td>';
+							echo '<td>' . rupiah($row["k1"]) . '</td>';
 							echo '<td>' . $row["k2"] . '</td>';
 							echo '<td>' . $row["k3"] . '</td>';
 							echo '<td>' . $row["k4"] . '</td>';
@@ -125,7 +129,6 @@ include('configdb.php');
 					</tbody>
 				</table>
 			</div>
-			<div class="panel-footer text-primary"><?php echo $_SESSION['by']; ?><div class="pull-right"></div>
 			</div>
 		</div>
 

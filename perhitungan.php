@@ -87,7 +87,33 @@ include('configdb.php');
 					for ($i = 0; $i < $a; $i++) {
 						echo "<tr><td><b>A" . ($i + 1) . "</b></td>";
 						for ($j = 0; $j < $k; $j++) {
-							echo "<td>" . $alt[$i][$j] . "</td>";
+							if ($j == 0) {
+								if ($alt[$i][0] <= 500000) {
+									echo "<td> 20 </td>";
+								} elseif ($alt[$i][0] <= 1000000) {
+									echo "<td> 40 </td>";
+								} elseif ($alt[$i][0] <= 1500000) {
+									echo "<td> 60 </td>";
+								} elseif ($alt[$i][0] <= 2000000) {
+									echo "<td> 80 </td>";
+								} elseif ($alt[$i][0] <= 2500000) {
+									echo "<td> 100 </td>";
+								}
+							} elseif ($j == 1) {
+								if ($alt[$i][1] <= 60) {
+									echo "<td> 20 </td>";
+								} elseif ($alt[$i][1] <= 70) {
+									echo "<td> 40 </td>";
+								} elseif ($alt[$i][1] <= 80) {
+									echo "<td> 60 </td>";
+								} elseif ($alt[$i][1] <= 90) {
+									echo "<td> 80 </td>";
+								} elseif ($alt[$i][1] <= 100) {
+									echo "<td> 100 </td>";
+								}
+							} else {
+								echo "<td>" . $alt[$i][$j] . "</td>";
+							}
 						}
 						echo "</tr>";
 					}
@@ -138,7 +164,33 @@ include('configdb.php');
 					for ($i = 0; $i < $a; $i++) {
 						echo "<tr><td><b>A" . ($i + 1) . "</b></td>";
 						for ($j = 0; $j < $k; $j++) {
-							$s[$i][$j] = pow(($alt[$i][$j]), $pangkat[$j]);
+							if ($j == 0) {
+								if ($alt[$i][0] <= 500000) {
+									$s[$i][0] = pow((20), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 1000000) {
+									$s[$i][0] = pow((40), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 1500000) {
+									$s[$i][0] = pow((60), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 2000000) {
+									$s[$i][0] = pow((80), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 2500000) {
+									$s[$i][0] = pow((100), $pangkat[$j]);
+								}
+							} elseif ($j == 1) {
+								if ($alt[$i][1] <= 60) {
+									$s[$i][1] = pow((20), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 70) {
+									$s[$i][1] = pow((40), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 80) {
+									$s[$i][1] = pow((60), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 90) {
+									$s[$i][1] = pow((80), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 100) {
+									$s[$i][1] = pow((100), $pangkat[$j]);
+								}
+							} else {
+								$s[$i][$j] = pow(($alt[$i][$j]), $pangkat[$j]);
+							}
 						}
 						$ss[$i] = $s[$i][0] * $s[$i][1] * $s[$i][2] * $s[$i][3];
 						echo "<td>" . round($ss[$i], 6) . "</td></tr>";
@@ -267,9 +319,8 @@ include('configdb.php');
 					?>
 				</center>
 			</div>
-			<div class="panel-footer text-primary"><?php echo $_SESSION['by']; ?><div class="pull-right"></div>
-			</div>
 		</div>
+	</div>
 
 	</div> <!-- /container -->
 

@@ -117,13 +117,12 @@ include('configdb.php');
 							</div>
 							<div>
 							</div>
-							<div class="panel-footer text-primary"><?php echo $_SESSION['by']; ?><div class="pull-right"></div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div> <!-- /page wrapper -->
+		</div>
+	</div> <!-- /page wrapper -->
 	</div> <!-- /container -->
 	</div> <!-- /wrapper -->
 

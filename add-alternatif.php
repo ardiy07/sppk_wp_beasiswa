@@ -129,7 +129,6 @@ include('configdb.php');
         </form>
         <?php ?>
       </div>
-      <div class="panel-footer text-primary"><?php echo $_SESSION['by']; ?><div class="pull-right"></div>
       </div>
     </div>
 
