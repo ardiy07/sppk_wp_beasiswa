@@ -83,17 +83,7 @@ include('configdb.php');
             </div>
             <div class="form-group">
               <label for="k1"><?php echo ucwords($k[0]); ?></label>
-              <select class="form-control" name="k1" id="k1">
-                <option value='20'>
-                  <=Rp500.000 </option>
-                <option value='40'>
-                  <=Rp1.000.000 </option>
-                <option value='60'>
-                  <=Rp1.500.000 </option>
-                <option value='80'>
-                  <=Rp2.000.000 </option>
-                <option value='100'> >=Rp.2.000.000</option>
-              </select>
+              <input name="k1" id="k1" min="10000" class="form-control" placeholder="Pendapatan Orang Tua">
             </div>
             <div class="form-group">
               <label for="k2"><?php echo ucwords($k[1]); ?></label>
@@ -106,7 +96,7 @@ include('configdb.php');
                 <option value='40'>Buruk</option>
                 <option value='60'>Sedang</option>
                 <option value='80'>Baik</option>
-                <option value='100'> >Sangat Baik</option>
+                <option value='100'>Sangat Baik</option>
               </select>
             </div>
             <div class="form-group">
@@ -116,7 +106,7 @@ include('configdb.php');
                 <option value='40'>Buruk</option>
                 <option value='60'>Sedang</option>
                 <option value='80'>Baik</option>
-                <option value='100'> >Sangat Baik</option>
+                <option value='100'>Sangat Baik</option>
               </select>
             </div>
           </div><!-- /.box-body -->
