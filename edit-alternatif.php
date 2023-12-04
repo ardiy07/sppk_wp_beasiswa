@@ -76,21 +76,15 @@ include('configdb.php');
             <div class="box-body">
               <div class="form-group mt-3">
                 <label for="alternatif">Alternatif</label>
-                <input type="text" class="form-control" name="alternatif" id="alternatif" value="<?php echo $row["alternatif"]; ?>" placeholder="Nama Alternatif">
+                <input type="text" class="form-control" name="alternatif" id="alternatif" value="<?php echo $row["alternatif"]; ?>" placeholder="Nama Alternatif" require>
               </div>
               <div class="form-group mt-3">
                 <label for="k1"><?php echo ucwords($k[0]); ?></label>
-                <select class="form-control" name="k1" id="k1">
-                  <option value='20' <?php if ($row["k1"] == '20') echo "selected" ?>> <=Rp500.000 </option>
-                  <option value='40' <?php if ($row["k1"] == '40') echo "selected" ?>><=Rp1.000.000 </option>
-                  <option value='60' <?php if ($row["k1"] == '60') echo "selected" ?>><=Rp1.500.000 </option>
-                  <option value='80' <?php if ($row["k1"] == '80') echo "selected" ?>><=Rp2.000.000 </option>
-                  <option value='100' <?php if ($row["k1"] == '100') echo "selected" ?>>>=Rp.2.000.000</option>
-                </select>
+                <input name="k1" id="k1" min="1000" class="form-control" value="<?php echo $row["k1"]; ?>" placeholder="Pendapatan Orang Tua" require>
               </div>
               <div class="form-group mt-3">
                 <label for="k2"><?php echo ucwords($k[1]); ?></label>
-                <input name="k2" id="k2" min="1" max="100" class="form-control" value="<?php echo $row["k2"]; ?>" placeholder="Nilai Raport">
+                <input name="k2" id="k2" min="1" max="100" class="form-control" value="<?php echo $row["k2"]; ?>" placeholder="Nilai Raport" require>
               </div>
               <div class="form-group mt-3">
                 <label for="k3"><?php echo ucwords($k[2]); ?></label>

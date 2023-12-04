@@ -1,6 +1,11 @@
 <?php
 session_start();
 include('configdb.php');
+
+function rupiah($angka){
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+}
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +97,7 @@ include('configdb.php');
 							echo '<tr>';
 							echo '<td>' . $i++ . '</td>';
 							echo '<td>' . ucwords($row["alternatif"]) . '</td>';
-							echo '<td>' . $row["k1"] . '</td>';
+							echo '<td>' . rupiah($row["k1"]) . '</td>';
 							echo '<td>' . $row["k2"] . '</td>';
 							echo '<td>' . $row["k3"] . '</td>';
 							echo '<td>' . $row["k4"] . '</td>';

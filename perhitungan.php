@@ -6,44 +6,45 @@ include('configdb.php');
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPPK Weighted Product</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SPPK Weighted Product</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
+
 <body>
 
-	  <!-- Navigation -->
-	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto"> <!-- ml-auto to align to the right -->
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="kriteria.php">Data Kriteria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="alternatif.php">Data Alternatif</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="analisa.php">Analisa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="perhitungan.php">Perhitungan</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto"> <!-- ml-auto to align to the right -->
+				<li class="nav-item active">
+					<a class="nav-link" href="index.php">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="kriteria.php">Data Kriteria</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="alternatif.php">Data Alternatif</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="analisa.php">Analisa</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="perhitungan.php">Perhitungan</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container mt-5">
 		<!-- Main component for a primary marketing message or call to action -->
@@ -71,7 +72,33 @@ include('configdb.php');
 					for ($i = 0; $i < $a; $i++) {
 						echo "<tr><td><b>A" . ($i + 1) . "</b></td>";
 						for ($j = 0; $j < $k; $j++) {
-							echo "<td>" . $alt[$i][$j] . "</td>";
+							if ($j == 0) {
+								if ($alt[$i][0] <= 500000) {
+									echo "<td> 20 </td>";
+								} elseif ($alt[$i][0] <= 1000000) {
+									echo "<td> 40 </td>";
+								} elseif ($alt[$i][0] <= 1500000) {
+									echo "<td> 60 </td>";
+								} elseif ($alt[$i][0] <= 2000000) {
+									echo "<td> 80 </td>";
+								} elseif ($alt[$i][0] <= 2500000) {
+									echo "<td> 100 </td>";
+								}
+							} elseif ($j == 1) {
+								if ($alt[$i][1] <= 60) {
+									echo "<td> 20 </td>";
+								} elseif ($alt[$i][1] <= 70) {
+									echo "<td> 40 </td>";
+								} elseif ($alt[$i][1] <= 80) {
+									echo "<td> 60 </td>";
+								} elseif ($alt[$i][1] <= 90) {
+									echo "<td> 80 </td>";
+								} elseif ($alt[$i][1] <= 100) {
+									echo "<td> 100 </td>";
+								}
+							} else {
+								echo "<td>" . $alt[$i][$j] . "</td>";
+							}
 						}
 						echo "</tr>";
 					}
@@ -122,7 +149,33 @@ include('configdb.php');
 					for ($i = 0; $i < $a; $i++) {
 						echo "<tr><td><b>A" . ($i + 1) . "</b></td>";
 						for ($j = 0; $j < $k; $j++) {
-							$s[$i][$j] = pow(($alt[$i][$j]), $pangkat[$j]);
+							if ($j == 0) {
+								if ($alt[$i][0] <= 500000) {
+									$s[$i][0] = pow((20), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 1000000) {
+									$s[$i][0] = pow((40), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 1500000) {
+									$s[$i][0] = pow((60), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 2000000) {
+									$s[$i][0] = pow((80), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 2500000) {
+									$s[$i][0] = pow((100), $pangkat[$j]);
+								}
+							} elseif ($j == 1) {
+								if ($alt[$i][1] <= 60) {
+									$s[$i][1] = pow((20), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 70) {
+									$s[$i][1] = pow((40), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 80) {
+									$s[$i][1] = pow((60), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 90) {
+									$s[$i][1] = pow((80), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 100) {
+									$s[$i][1] = pow((100), $pangkat[$j]);
+								}
+							} else {
+								$s[$i][$j] = pow(($alt[$i][$j]), $pangkat[$j]);
+							}
 						}
 						$ss[$i] = $s[$i][0] * $s[$i][1] * $s[$i][2] * $s[$i][3];
 						echo "<td>" . round($ss[$i], 6) . "</td></tr>";
@@ -267,12 +320,12 @@ include('configdb.php');
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="ui/js/ie10-viewport-bug-workaround.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
 
 </body>
 
