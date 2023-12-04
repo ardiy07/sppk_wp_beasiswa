@@ -71,7 +71,33 @@ include('configdb.php');
 					for ($i = 0; $i < $a; $i++) {
 						echo "<tr><td><b>A" . ($i + 1) . "</b></td>";
 						for ($j = 0; $j < $k; $j++) {
-							echo "<td>" . $alt[$i][$j] . "</td>";
+							if ($j == 0) {
+								if ($alt[$i][0] <= 500000) {
+									echo "<td> 20 </td>";
+								} elseif ($alt[$i][0] <= 1000000) {
+									echo "<td> 40 </td>";
+								} elseif ($alt[$i][0] <= 1500000) {
+									echo "<td> 60 </td>";
+								} elseif ($alt[$i][0] <= 2000000) {
+									echo "<td> 80 </td>";
+								} elseif ($alt[$i][0] <= 2500000) {
+									echo "<td> 100 </td>";
+								}
+							} elseif ($j == 1) {
+								if ($alt[$i][1] <= 60) {
+									echo "<td> 20 </td>";
+								} elseif ($alt[$i][1] <= 70) {
+									echo "<td> 40 </td>";
+								} elseif ($alt[$i][1] <= 80) {
+									echo "<td> 60 </td>";
+								} elseif ($alt[$i][1] <= 90) {
+									echo "<td> 80 </td>";
+								} elseif ($alt[$i][1] <= 100) {
+									echo "<td> 100 </td>";
+								}
+							} else {
+								echo "<td>" . $alt[$i][$j] . "</td>";
+							}
 						}
 						echo "</tr>";
 					}
@@ -122,7 +148,33 @@ include('configdb.php');
 					for ($i = 0; $i < $a; $i++) {
 						echo "<tr><td><b>A" . ($i + 1) . "</b></td>";
 						for ($j = 0; $j < $k; $j++) {
-							$s[$i][$j] = pow(($alt[$i][$j]), $pangkat[$j]);
+							if ($j == 0) {
+								if ($alt[$i][0] <= 500000) {
+									$s[$i][0] = pow((20), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 1000000) {
+									$s[$i][0] = pow((40), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 1500000) {
+									$s[$i][0] = pow((60), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 2000000) {
+									$s[$i][0] = pow((80), $pangkat[$j]);
+								} elseif ($alt[$i][0] <= 2500000) {
+									$s[$i][0] = pow((100), $pangkat[$j]);
+								}
+							} elseif ($j == 1) {
+								if ($alt[$i][1] <= 60) {
+									$s[$i][1] = pow((20), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 70) {
+									$s[$i][1] = pow((40), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 80) {
+									$s[$i][1] = pow((60), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 90) {
+									$s[$i][1] = pow((80), $pangkat[$j]);
+								} elseif ($alt[$i][1] <= 100) {
+									$s[$i][1] = pow((100), $pangkat[$j]);
+								}
+							} else {
+								$s[$i][$j] = pow(($alt[$i][$j]), $pangkat[$j]);
+							}
 						}
 						$ss[$i] = $s[$i][0] * $s[$i][1] * $s[$i][2] * $s[$i][3];
 						echo "<td>" . round($ss[$i], 6) . "</td></tr>";
@@ -144,13 +196,26 @@ include('configdb.php');
 					echo "</table><hr>";
 					// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> vektor S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 					uasort($v, 'cmp');
+					echo "<b>Penerima Beasiswa</b></br>";
+					echo "<table class='table table-striped table-bordered table-hover'>";
+					echo "<thead><tr><th>Nama Alternatif</th><th>Rangking</th><th>Nilai</th></tr></thead>";
 					for ($i = 0; $i < $arl2; $i++) { //new for 8 lines below
-						if ($i == 0)
-							echo "<div class='alert alert-dismissible alert-info'><b><i>Dari tabel tersebut dapat disimpulkan bahwa " . $alt_name[array_search((end($v)), $v)] . " mempunyai hasil paling tinggi, yaitu " . current($v);
-						elseif ($i == ($arl2 - 1))
-							echo "</br>Dan terakhir " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v) . ".</i></b></div>";
-						else
-							echo "</br>Lalu diikuti dengan " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v);
+						if ($i == 0){
+							echo "<tr><td><b>" . $alt_name[array_search((end($v)), $v)] . "</b></td>";
+							echo "<td><b>" . $i + 1 . "</b></td>";
+							echo "<td><b>" . current($v) . "</b></td>";
+						} else{
+							echo "<tr><td><b>" . $alt_name[array_search((prev($v)), $v)] . "</b></td>";
+							echo "<td><b>" . $i + 1 . "</b></td>";
+							echo "<td><b>" . current($v) . "</b></td>";
+						}
+
+						// if ($i == 0)
+						// 	echo "<div class='alert alert-dismissible alert-info'><b><i>Dari tabel tersebut dapat disimpulkan bahwa " . $alt_name[array_search((end($v)), $v)] . " mempunyai hasil paling tinggi, yaitu " . current($v);
+						// elseif ($i == ($arl2 - 1))
+						// 	echo "</br>Dan terakhir " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v) . ".</i></b></div>";
+						// else
+						// 	echo "</br>Lalu diikuti dengan " . $alt_name[array_search((prev($v)), $v)] . " dengan nilai " . current($v);
 					}
 
 					function jml_kriteria()
@@ -251,9 +316,8 @@ include('configdb.php');
 					?>
 				</center>
 			</div>
-			<div class="panel-footer text-primary"><?php echo $_SESSION['by']; ?><div class="pull-right"></div>
-			</div>
 		</div>
+	</div>
 
 	</div> <!-- /container -->
 

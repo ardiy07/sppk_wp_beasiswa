@@ -10,14 +10,30 @@ include('configdb.php');
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPPK Weighted Product</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title><?php echo $_SESSION['judul'] . " - " . $_SESSION['by']; ?></title>
+
+  <!-- Bootstrap core CSS -->
+  <!--link href="ui/css/bootstrap.css" rel="stylesheet"-->
+  <link href="ui/css/cerulean.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="ui/css/jumbotron.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <!--script src="./index_files/ie-emulation-modes-warning.js"></script-->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
@@ -80,13 +96,7 @@ include('configdb.php');
               </div>
               <div class="form-group mt-3">
                 <label for="k1"><?php echo ucwords($k[0]); ?></label>
-                <select class="form-control" name="k1" id="k1">
-                  <option value='20' <?php if ($row["k1"] == '20') echo "selected" ?>> <=Rp500.000 </option>
-                  <option value='40' <?php if ($row["k1"] == '40') echo "selected" ?>><=Rp1.000.000 </option>
-                  <option value='60' <?php if ($row["k1"] == '60') echo "selected" ?>><=Rp1.500.000 </option>
-                  <option value='80' <?php if ($row["k1"] == '80') echo "selected" ?>><=Rp2.000.000 </option>
-                  <option value='100' <?php if ($row["k1"] == '100') echo "selected" ?>>>=Rp.2.000.000</option>
-                </select>
+                <input name="k1" id="k1" min="10000" class="form-control" value="<?php echo $row["k1"]; ?>" placeholder="Pendapatan Orang Tua">
               </div>
               <div class="form-group mt-3">
                 <label for="k2"><?php echo ucwords($k[1]); ?></label>
@@ -124,9 +134,8 @@ include('configdb.php');
       }
         ?>
         </div>
-        <div class="panel-footer text-primary"><?php echo $_SESSION['by']; ?><div class="pull-right"></div>
-        </div>
     </div>
+  </div>
 
   </div> <!-- /container -->
 
