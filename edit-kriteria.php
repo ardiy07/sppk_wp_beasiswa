@@ -68,7 +68,7 @@ include('configdb.php');
               </div>
               <div class="form-group mt-3">
                 <label for="kepentingan">Nilai Kepentingan</label>
-                <input type="number" class="form-control" name="kepentingan" id="kepentingan" value="<?php echo $row["kepentingan"]; ?>" min="1">
+                  <input type="number" class="form-control" name="kepentingan" id="kepentingan" value="<?php echo $row["kepentingan"]; ?>" min="1"> 
               </div>
               <div class="form-group mt-3">
                 <label for="cost_benefit">Cost / Benefit</label>
@@ -88,9 +88,7 @@ include('configdb.php');
         <?php
       }
         ?>
-        </div>
     </div>
-  </div>
 
   </div> <!-- /container -->
 
